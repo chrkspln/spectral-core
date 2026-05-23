@@ -6,8 +6,7 @@
 #include <cstddef>
 
 // Forward-declare libsndfile handle — do not expose sndfile.h in public header.
-struct SNDFILE_tag;
-using SNDFILE = SNDFILE_tag;
+typedef struct sf_private_tag SNDFILE;
 
 namespace spectral::io {
 

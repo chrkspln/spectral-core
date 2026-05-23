@@ -12,6 +12,8 @@ FetchContent_Declare(spdlog
 set(PA_BUILD_STATIC   ON  CACHE BOOL "" FORCE)
 set(PA_BUILD_SHARED   OFF CACHE BOOL "" FORCE)
 set(PA_ENABLE_DEBUG_OUTPUT OFF CACHE BOOL "" FORCE)
+set(PA_DLL OFF CACHE BOOL "" FORCE)
+set(PA_CMAKE_BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(portaudio
     GIT_REPOSITORY https://github.com/PortAudio/portaudio.git
     GIT_TAG        v19.7.0

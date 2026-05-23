@@ -12,12 +12,18 @@ target_compile_options(spectral_core PRIVATE
     $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>
 )
 
-# PortAudio target name may be PortAudio or PortAudio::PortAudio depending on version
+# PortAudio target name may be PortAudio or portaudio
+# Try to link the static library variant
 target_link_libraries(spectral_core
     PUBLIC
         spdlog::spdlog
-        PortAudio
+        $<IF:$<TARGET_EXISTS:portaudio_static>,portaudio_static,PortAudio>
         SndFile::sndfile
+)
+
+# Ensure PortAudio include directories are available
+target_include_directories(spectral_core
+    PRIVATE ${portaudio_SOURCE_DIR}/include
 )
 # kissfft::kissfft-float will be added here in v0.2
 
